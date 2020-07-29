@@ -143,6 +143,9 @@ if (header_value = Curl_prefixed_str("Content-Disposition:", header)) {
 ```
 
 3. The max param is always more than 1 so we can use do {} while
+Also we can skip the `*first && *second` check:
+* the `first` is always our prefix and we already check `max`
+* the `second` is `\0` terminated and the `raw_tolower(ch1) != raw_tolower(ch2)` check will fail on `\0`.
 
 ```
     do {
@@ -161,7 +164,7 @@ if (header_value = Curl_prefixed_str("Content-Disposition:", header)) {
 
 Result is 15.3 ns.
 
-4. The prefix can be lower case string so we can not convert it to lower case
+4. The prefix can be already a lower case string so we can not convert it to lower case
 ```c
 const char* header_value;
 if (header_value = Curl_prefixed_str("content-disposition:", header)) {
