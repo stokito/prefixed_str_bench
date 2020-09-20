@@ -22,5 +22,7 @@ int main() {
     printN(value);
     value = Curl_prefixed_str_fast_lower("content-disposition", "Content-Type: text/html; charset=utf-8", 19);
     printN(value);
+    value = Curl_prefixed_str_fast_lower("content-disposition", "content-disposition", 19);
+    printN(value);
     return 0;
 }

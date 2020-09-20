@@ -106,6 +106,10 @@ const char *Curl_prefixed_str_fast(const char *prefix, const char *str, size_t m
             str++;
         }
     } while (max);
+    // if we reach end of string then return NULL
+    if (!*str) {
+        return NULL;
+    }
     return str;
 }
 
@@ -125,6 +129,10 @@ const char *Curl_prefixed_str_fast_lower(const char *prefix, const char *str, si
             str++;
         }
     } while (max);
+    // if we reach end of string then return NULL
+    if (!*str) {
+        return NULL;
+    }
     return str;
 }
 
